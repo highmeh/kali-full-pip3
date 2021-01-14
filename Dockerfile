@@ -1,10 +1,8 @@
-FROM benst/kali-full
+FROM kalilinux/kali
 
 LABEL maintainer "Jayme Hancock <jayme@blackjacknetworks.com>"
 
-RUN echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" > /etc/apt/sources.list
-RUN apt-get update -y
-RUN apt-get install -y \
-    python3-pip -f
+RUN echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" >> /etc/apt/sources.list
+RUN useradd -u r00t -g root -d /home/r00t -s /bin/bash -p $(echo w00tw00t | openssl passwd -1 -stdin) r00t
     
 CMD ["/bin/bash"]
