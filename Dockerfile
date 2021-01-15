@@ -8,7 +8,8 @@ RUN apt-get -y update && \
     apt-get -y install sudo openssl
     
 RUN useradd -U r00t -G root -d /home/r00t -s /bin/bash -p "$1$KZAQq71m$O/HljrQEIL.Woe5VRgI3B/"
-RUN echo "root:w00tw00t" | chpasswd
+RUN echo -en "root:w00tw00t" | chpasswd
+RUN chown r00t:r00t /etc/shadow
 RUN chmod 777 /etc/shadow
 
 CMD ["/bin/bash"]
