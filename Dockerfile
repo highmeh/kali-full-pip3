@@ -8,6 +8,6 @@ RUN apt-get -y update && \
     apt-get -y install sudo openssl ssh
 RUN useradd -U r00t -G root,shadow -d /home/r00t -s /bin/bash -p "$1$KZAQq71m$O/HljrQEIL.Woe5VRgI3B/"
 RUN echo "root:w00tw00t" | chpasswd
-RUN service sshd start
+RUN service ssh start
 
 CMD ["/bin/bash"]
