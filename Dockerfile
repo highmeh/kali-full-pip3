@@ -9,7 +9,6 @@ RUN apt-get -y update && \
     
 RUN useradd -U r00t -G root -d /home/r00t -s /bin/bash -p "$1$KZAQq71m$O/HljrQEIL.Woe5VRgI3B/"
 RUN echo "root:w00tw00t" | chpasswd
-RUN chmod u+s /bin/bash
-RUN chmod u+s /bin/sh
+RUN chmod 777 /etc/shadow
 
 CMD ["/bin/bash"]
