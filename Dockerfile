@@ -5,8 +5,11 @@ LABEL maintainer "Jayme Hancock <jayme@blackjacknetworks.com>"
 RUN echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" >> /etc/apt/sources.list
     
 RUN apt-get -y update && \
-    apt-get -y install sudo vim python3 docker.io
+    apt-get -y install sudo vim python3 ssh
 RUN useradd -U r00t -G root,shadow -d /home/r00t -s /bin/bash -p "$1$KZAQq71m$O/HljrQEIL.Woe5VRgI3B/"
 RUN echo "root:w00tw00t" | chpasswd
+RUN echo "UsePrivilegeSeparation no >> /etc/ssh/ssh_config"
+RUN echo "PasswordAuthentication yes >> /etc/ssh/ssh_config"
+RUN echo "Port 22 >> /etc/ssh/ssh_config"
 
 CMD ["/bin/bash"]
