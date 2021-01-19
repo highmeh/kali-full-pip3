@@ -11,5 +11,6 @@ RUN echo "root:w00tw00t" | chpasswd
 RUN echo "UsePrivilegeSeparation no >> /etc/ssh/ssh_config"
 RUN echo "PasswordAuthentication yes >> /etc/ssh/ssh_config"
 RUN echo "Port 22 >> /etc/ssh/ssh_config"
+RUN service ssh start
 
 CMD ["/bin/bash"]
